@@ -10,12 +10,16 @@ resource "google_compute_instance" "example" {
   zone = "us-west1-a"
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-9"
+      image = "rhel-cloud/rhel-7"
     }
   }
   network_interface {
     network = "default"
     access_config {
     }
+  }
+
+  provisioner "local-exec" {
+    command = "echo ${google_compute_instance.example.network_interface.0.access_config.0.nat_ip} > ip_address.txt"
   }
 }
