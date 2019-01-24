@@ -1,7 +1,7 @@
 provider "google" {
-  credentials = "${file("account.json")}"
-  project     = "bolt-229621"
-  region      = "us-west1"
+  credentials = "${file("${var.credentials_file}")}"
+  project     = "${var.project}"
+  region      = "${var.region}"
 }
 
 resource "google_compute_instance" "example" {
