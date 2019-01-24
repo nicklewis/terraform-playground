@@ -18,8 +18,4 @@ resource "google_compute_instance" "example" {
     access_config {
     }
   }
-
-  provisioner "local-exec" {
-    command = "echo ${google_compute_instance.example.network_interface.0.access_config.0.nat_ip} > ip_address.txt"
-  }
 }
